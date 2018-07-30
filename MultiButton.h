@@ -5,7 +5,9 @@
 #include "callback.h"
 
 /*
-    Momentary button, calls hold callback when held for longer than hold_duration and calls release callbacks when released
+    Momentary button class with builtin debouncing, supports both short and sustained presses.
+    Calls press_callback when pressed and released before the hold_duration.
+    Calls hold_callback when held for longer than hold_duration and calls release_callback when released from a sustained press.
     Written by Killian Meersman <killian.meersman@gmail.com> 2018
 */
 class MultiButton {

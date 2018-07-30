@@ -5,7 +5,8 @@
 #include "callback.h"
 
 /*
-    Momentary button, calls callback when pressed
+    Momentary button class with builtin debouncing.
+    Calls press_callback when pressed.
     Written by Killian Meersman <killian.meersman@gmail.com> 2018
 */
 class PushButton {
