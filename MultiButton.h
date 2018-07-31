@@ -15,7 +15,7 @@ public:
     MultiButton() {}
     MultiButton(byte pin, bool pullup, unsigned long hold_duration, Callback press_callback = NULL,
         Callback hold_callback = NULL, Callback release_callback = NULL, int debounce_delay = 50);
-    void update(unsigned long delta);
+    void update();
     bool is_pressed();
     void set_press_callback(Callback callback);
     void set_hold_callback(Callback callback);
@@ -24,6 +24,7 @@ public:
 private:
     byte pin;
     bool pressed_mode;
+    bool long_press = false;
     bool last_state = false;
     bool debounced_state = false;
     unsigned long last_debounce = 0;

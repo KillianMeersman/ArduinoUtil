@@ -17,28 +17,32 @@ void MultiButton::update() {
     unsigned long t = millis();
     if (last_state != state) {
         last_debounce = t;
-        last_state = state;
     }
 
     unsigned long delta = t - last_debounce;
     if (delta >= debounce_delay) {
+        // if changed
         if (state != debounced_state) {
             debounced_state = state;
-            if (state && (delta >= hold_duration)) {
-                hold_callback();
-            }
-            else if (!state) {
+            if (!state && long_press) {
+                long_press = false;
                 release_callback();
             }
-        } else if (delta < hold_duration) {
-            press_callback();
+            else if(!state) {
+                press_callback();
+            }
         }
-
+        else if (state && !long_press && (delta >= hold_duration)) {
+            long_press = true;
+            hold_callback();
+        }
     }
+
+    last_state = state;
 }
 
 bool MultiButton::is_pressed() {
-    return digitalRead(pin) && pressed_mode;
+    return digitalRead(pin) ^ pressed_mode;
 }
 
 void MultiButton::set_press_callback(Callback callback) {

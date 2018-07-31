@@ -34,7 +34,7 @@ void HoldButton::update() {
 }
 
 bool HoldButton::is_pressed() {
-    return digitalRead(pin) && pressed_mode;
+    return digitalRead(pin) ^ pressed_mode;
 }
 
 void HoldButton::set_hold_callback(Callback callback) {

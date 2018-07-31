@@ -14,7 +14,7 @@ public:
     HoldButton() {}
     HoldButton(byte pin, bool pullup, unsigned long hold_duration, 
         Callback hold_callback = NULL, Callback release_callback = NULL, int debounce_delay = 50);
-    void update(unsigned long delta);
+    void update();
     bool is_pressed();
     void set_hold_callback(Callback callback);
     void set_release_callback(Callback callback);

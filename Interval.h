@@ -1,15 +1,15 @@
-#ifndef Timer_h
-#define Timer_h
+#ifndef Interval_h
+#define Interval_h
 
 #include "callback.h"
 /*
-    Basic timer that will execute a callback function every n milliseconds (interval)
+    Basic interval timer that will execute a callback function every n milliseconds (interval)
     Written by Killian Meersman <killian.meersman@gmail.com> 2018
 */
-class Timer {
+class Interval {
 public:
-    Timer();
-    Timer(unsigned long interval, Callback callback);
+    Interval();
+    Interval(unsigned long interval, Callback callback);
     void update(unsigned long delta);
     void start();
     void stop();

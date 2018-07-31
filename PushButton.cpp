@@ -29,7 +29,7 @@ void PushButton::update() {
 }
 
 bool PushButton::is_pressed() {
-    return digitalRead(pin) && pressed_mode;
+    return digitalRead(pin) ^ pressed_mode;
 }
 
 void PushButton::set_press_callback(Callback callback) {

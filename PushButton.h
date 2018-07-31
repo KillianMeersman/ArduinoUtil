@@ -13,7 +13,7 @@ class PushButton {
 public:
     PushButton() {}
     PushButton(byte pin, bool pullup, Callback press_callback = NULL, int debounce_delay = 50);
-    void update(unsigned long delta);
+    void update();
     bool is_pressed();
     void set_press_callback(Callback callback);
 
